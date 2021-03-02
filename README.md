@@ -1,6 +1,6 @@
 # WebProgramming
 
-Lưu trữ bài tập môn lập trình web lớp 18CT111
+Lưu trữ bài tập môn lập trình web
 
 ## Buổi 01: Giới thiệu về ASP.NET MVC.
 - Mô hình MVC (Models-View-Controller)
