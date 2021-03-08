@@ -1,0 +1,23 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="col25">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        @foreach (var item in ViewBag.StudentList)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+            </tr>
+        }
+    </table>
+</div>
+<div id="col75">Cột 75</div>
+<div class="clear"></div>
+

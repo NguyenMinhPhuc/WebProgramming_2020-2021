@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>@ViewBag.Message</p>
+<p>Tôi tên là: @ViewBag.Name</p>
+<p>Tuổi của tôi là: @ViewBag.Age</p>
+<hr />
+<p>Thông tin sinh viên</p>
+<ul>
+    <li>MSSV: @ViewBag.Student1.StudentID</li>
+    <li>Họ và tên: @ViewBag.Student1.StudentName</li>
+    <li>Lớp: @ViewBag.Student1.ClassName</li>
+    <li>Tuổi: @ViewBag.Student1.Age</li>
+</ul>
+<hr />
+<h3>Danh sách sinh viên</h3>
+<table class="table">
+    <tr>
+        <th scope="col">Student ID</th>
+        <th scope ="col">Student Name</thscope>
+        <th scope="col">Class</th>
+        <th scope="col">Age</th>
+    </tr>
+    @foreach (var item in ViewBag.StudentList)
+    {
+        <tr>
+            <th scope="col">@item.StudentID</th>
+            <td>@item.StudentName</td>
+            <td>@item.ClassName</td>
+            <td>@item.Age</td>
+        </tr>
+    }
+
+</table>
+<hr />
+<p>Du lieu lay tu ViewData</p>
+
+<p>@ViewData["Message"]</p>
+<p>@ViewData["Name"]</p>
+<p>@ViewData["Age"]</p>
+<hr />
+<p>Thông tin 1 sinh viên View Data</p>
+<ul>
+   <li>@((ViewData["StudentData"] as Project_Website_20200308.Models.Student).StudentID)</li>
+    <li>@((ViewData["StudentData"] as Project_Website_20200308.Models.Student).StudentName)</li>
+    <li>@((ViewData["StudentData"] as Project_Website_20200308.Models.Student).ClassName)</li>
+    <li>@((ViewData["StudentData"] as Project_Website_20200308.Models.Student).Age)</li>
+</ul>

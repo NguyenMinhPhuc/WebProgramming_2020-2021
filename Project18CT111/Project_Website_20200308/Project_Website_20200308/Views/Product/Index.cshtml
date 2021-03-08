@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách Sản phẩm</h2>
+<table class="table">
+    <tr>
+        <th scope="col">Product ID</th>
+        <th scope="col">Product Name</thscope>
+        <th scope="col">Color</th>
+        <th scope="col">Size</th>
+        <th scope="col">Quantity</th>
+    </tr>
+    @foreach (var item in ViewBag.Products)
+    {
+        <tr>
+            <th scope="col">@item.ProductID</th>
+            <td>@item.ProductName</td>
+            <td>@item.Color</td>
+            <td>@item.Size</td>
+            <td>@item.Quantity</td>
+        </tr>
+    }
+</table>
+<form action="/Product/ProductByID" method="get">
+    <input type="text" name="ProductID" />
+    <input type="submit" value="submit" />
+</form>
+
