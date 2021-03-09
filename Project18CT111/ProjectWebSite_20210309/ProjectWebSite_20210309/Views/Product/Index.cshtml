@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @for (int i = 0; i < Convert.ToInt32(ViewData["Number"]); i++)
+    {
+        @ViewData["Message"]<br />
+    }
+  
+
+    @ViewData["Number"]
+</p>

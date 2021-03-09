@@ -1,0 +1,13 @@
+﻿@using ProjectWebSite_20210309.Models;
+@{
+    ViewBag.Title = "ProductByID";
+}
+
+<h2>ProductByID</h2>
+
+<ul>
+    Thông tin sản phẩm @((ViewData["_product"] as Product).ProductID)
+    <li>@((ViewData["_product"] as Product).ProductName)</li>
+    <li>@((ViewData["_product"] as Product).Quantity)</li>
+    <li>@(string.Format("{0:#,###0}", (ViewData["_product"] as Product).Price))</li>
+</ul>

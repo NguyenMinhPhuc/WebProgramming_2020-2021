@@ -1,0 +1,30 @@
+﻿@using ProjectWebSite_20210309.Models
+@{
+    ViewBag.Title = "ProductList";
+};
+
+<h2>ProductList</h2>
+<div class="form-group">
+    <form action="/Product/ProductByID" method="get">
+        <input type="text" name="ProductID" placeholder="Input ProductID" class="form-control" />
+        <input type="submit" name="name" value="Get Product" class="btn btn-primary" />
+    </form>
+</div>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    
+    @foreach (var item in ViewData["_productList"] as List<Product>)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.Quantity</td>
+            <td>@(string.Format("{0:#,###0}", item.Price))</td>
+        </tr>
+    }
+</table>

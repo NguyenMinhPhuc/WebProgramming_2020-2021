@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "StudentsList";
+}
+
+<div>
+   StudentsList &nbsp;&nbsp; 
+   <form action="/Home/StudentByID" method="get">
+       <input type="text" placeholder="Nhập Student ID" name="StudentID"/>
+       <input type="submit" value="Get Studentd by ID" />
+   </form>
+</div>
+<table class="table">
+    <caption>Danh sách sinh viên</caption>
+   <tr>
+       <th scope="col">ID</th>
+       <th scope="col">Name</th>
+       <th scope="col">Class</th>
+       <th scope="col">Address</th>
+   </tr>
+    @foreach (var item in ViewBag.studentList)
+    {
+        <tr>
+            <td scope="col">@item.StudentID</td>
+            <td>@item.StudentName</td>
+            <td>@item.ClassName</td>
+            <td>@item.Address</td>
+        </tr>
+    }
+</table>

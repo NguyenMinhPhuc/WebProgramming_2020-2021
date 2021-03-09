@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.Message += " Được thêm ở view";
+}
+
+<h2>Index</h2>
+<p>@ViewBag.Message</p>
+@for (int i = 0; i < ViewBag.Number; i++)
+{
+    <p>Tôi tên là:@ViewBag.Name</p>
+    <p>Tôi:@ViewBag.Age tuổi</p>
+}
