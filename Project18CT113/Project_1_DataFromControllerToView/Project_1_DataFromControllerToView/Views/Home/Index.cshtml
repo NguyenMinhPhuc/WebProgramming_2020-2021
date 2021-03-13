@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Message</h2>
+<ul>
+@for (int i = 0; i < ViewBag.SoLan; i++)
+{
+    <li>@ViewBag.LoiChao</li>
+}
+</ul>
+

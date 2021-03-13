@@ -1,0 +1,28 @@
+﻿@using Project_1_DataFromControllerToView.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách sản phẩm</h2>
+<div class="form-group">
+    <form action="/Product/ProductByID" method="get">
+        <input type="text" name="ProductID" placeholder="Nhập product ID" class="form-control" />
+        <input type="submit" name="btnSearch" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in ViewData["products"] as List<Product>)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@string.Format("{0:#,###0}",item.Price)</td>
+        </tr>
+    }
+</table>

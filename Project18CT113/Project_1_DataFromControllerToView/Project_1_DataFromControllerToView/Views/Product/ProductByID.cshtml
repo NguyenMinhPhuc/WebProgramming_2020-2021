@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ProductByID";
+}
+@using Project_1_DataFromControllerToView.Models;
+<h2>Thông tin sản phẩm</h2>
+@if (ViewData["product"] is Product)
+{
+    <p>ID: @((ViewData["product"] as Product).ProductID)</p>
+    <p>Name: @((ViewData["product"] as Product).ProductName)</p>
+    <p>Price: @(string.Format("{0:#,###0}",(ViewData["product"] as Product).Price))</p>
+}
+else
+{
+    <p>@ViewData["product"]
+    <br /> @Html.ActionLink("Quay lại", "index", "Product", new { area = "" }, new { @class = "navbar-brand" })</p>
+   
+}
+
