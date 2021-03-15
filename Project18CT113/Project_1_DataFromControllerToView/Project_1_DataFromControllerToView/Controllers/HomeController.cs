@@ -12,9 +12,11 @@ namespace Project_1_DataFromControllerToView.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Message = "Đây là trang chủ của website";
-            ViewBag.LoiChao =string.Format("Chào cả lớp {0}","18CT113");
-            ViewBag.SoLan = 10;
+            ViewBag.Message = "Chào cả lớp, Đây là dữ liệu được gửi từ Controller Home sang View";
+
+            ViewBag.LoiChao =string.Format("Tôi đã biết lập trình web bằng ASP.NET MVC 5 từ ngày: {0}",DateTime.Now.ToString());
+            ViewBag.SoLan = 30;
+            TempData["Number"] = 30;
             return View();
         }
         public ActionResult HienThiSinhVien()
@@ -32,7 +34,9 @@ namespace Project_1_DataFromControllerToView.Controllers
         }
         public ActionResult HienThiDSSinhVien()
         {
+            //Khai báo đối tượng StudentDAO.
             StudentDAO sd = new StudentDAO();
+            //Gọi hàm GetStudentList() để lấy về danh sách student được khởi tạo trong StudentDAO.
             var list = sd.GetStudentList();
             
             //Gán đối tượng sv1 cho ViewBag.student

@@ -1,0 +1,26 @@
+﻿@using Project_20210315_Models.Models;
+@{
+    ViewBag.Title = "Students";
+}
+
+<h2>Students</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>BirthDay</th>
+        <th>Sex</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var item in TempData["students"] as List<Student>)
+    {
+        <tr>
+            <td>@item.StudentID</td>
+            <td>@item.StudentName</td>
+            <td>@item.BirthDay.ToShortDateString()</td>
+            <td>@(Convert.ToBoolean(item.Sex)?"Nam":"Nữ")</td>
+            <td>@item.Address</td>
+        </tr>
+    }
+   
+</table>

@@ -10,7 +10,7 @@ namespace Project_1_DataFromControllerToView.Models
         List<Student> list;
         public StudentDAO()
         {
-            list = new List<Student>() { 
+             list = new List<Student>() { 
                 new Student(){ StudentID=1,StudentName="Nguyễn Văn A",ClassName="18CT113",Address="Bình Dương"},
                 new Student(){ StudentID=2,StudentName="Nguyễn Văn B",ClassName="18CT113",Address="Đồng Nai"},
                 new Student(){ StudentID=3,StudentName="Nguyễn Văn C",ClassName="18CT113",Address="Bình Dương"},
@@ -19,7 +19,10 @@ namespace Project_1_DataFromControllerToView.Models
                 new Student(){ StudentID=6,StudentName="Nguyễn Văn F",ClassName="18CT113",Address="Bình Dương"}
             };
         }
-        
+        /// <summary>
+        /// PHương thức trả về danh sách Student được khởi tạo trong hàm tạo
+        /// </summary>
+        /// <returns>Trả về List<Student></returns>
         public List<Student> GetStudentList()
         {
             return list;
