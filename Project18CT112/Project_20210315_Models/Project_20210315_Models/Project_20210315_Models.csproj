@@ -95,13 +95,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Students.cshtml" />
+    <Content Include="Views\Home\StudentByID.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

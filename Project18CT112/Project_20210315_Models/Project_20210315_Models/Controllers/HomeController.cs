@@ -32,8 +32,19 @@ namespace Project_20210315_Models.Controllers
 
         public ActionResult Students()
         {
-            var _students = new StudentDB().GetStudents();
+            var _students = new StudentDB().GetStudentList();
             TempData["students"] = _students;
+            TempData.Keep();
+            return View();
+        }
+        public ActionResult StudentByID(string StudentID)
+        {
+            //lấy danh sach từ view Students
+            var Students = TempData["students"] as List<Student>;
+            //Tìm student trong danh sách có ma số: StudentID
+            var _student = Students.SingleOrDefault(x => x.StudentID == StudentID);
+            //Gán student tìm được vào đối tượng viewBag
+            TempData["student"] = _student;
             return View();
         }
     }
