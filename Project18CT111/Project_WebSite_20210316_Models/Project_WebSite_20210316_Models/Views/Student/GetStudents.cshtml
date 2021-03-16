@@ -1,0 +1,31 @@
+﻿@using System.Collections;
+@using Project_WebSite_20210316_Models.Models;
+@model IEnumerable<Student>
+@{
+    ViewBag.Title = "GetStudents";
+}
+
+<h2>GetStudents</h2>
+
+<table class="table table-bordered">
+    <caption style="font-size:4em;">Student list</caption>
+    <tr>
+        <th>Student iD</th>
+        <th>Student Name</th>
+        <th>BirthDay</th>
+        <th>Sex</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+            @item.StudentID</td>
+            <td>@item.StudentName</td>
+            <td>@item.BirthDay.ToShortDateString()</td>
+            <td>@(item.Sex ? "Nam" : "Nữ")</td>
+            <td>@item.Address</td>
+        </tr>
+    }
+</table>
+

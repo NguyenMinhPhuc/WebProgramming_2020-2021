@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Project_WebSite_20210316_Models.Models.Student>
+
+@{
+    ViewBag.Title = "GetStudetList";
+}
+
+<h2>GetStudetList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentID })
+        </td>
+    </tr>
+}
+
+</table>

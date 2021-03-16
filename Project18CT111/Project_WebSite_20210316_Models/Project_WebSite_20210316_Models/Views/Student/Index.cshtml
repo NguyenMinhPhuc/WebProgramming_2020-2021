@@ -1,0 +1,35 @@
+﻿@using Project_WebSite_20210316_Models.Models;
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<div class="form-group">
+    <form action="/Student/StudentByID" method="get" class="form-inline">
+        <div class="form-group">
+            <label for="studentID">Student ID:</label>
+            <input type="text" id="studentID" name="StudentID" class="form-control"/>
+            <input type="submit" name="btnSearch" value="Search" class="btn btn-primary" />
+        </div>
+        
+    </form>
+</div>
+<table class="table table-bordered">
+    <caption style="font-size:4em;">Student list</caption>
+    <tr>
+        <th>Student iD</th>
+        <th>Student Name</th>
+        <th>BirthDay</th>
+        <th>Sex</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var item in TempData["students"] as List<Student>)
+    {
+        <tr>
+            <td>@item.StudentID</td>
+            <td>@item.StudentName</td>
+            <td>@item.BirthDay.ToShortDateString()</td>
+            <td>@(item.Sex?"Nam":"Nữ")</td>
+            <td>@item.Address</td>
+        </tr>
+    }
+</table>

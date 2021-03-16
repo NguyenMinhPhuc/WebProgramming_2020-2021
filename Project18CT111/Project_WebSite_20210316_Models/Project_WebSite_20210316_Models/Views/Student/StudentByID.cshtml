@@ -1,0 +1,13 @@
+﻿@using Project_WebSite_20210316_Models.Models;
+@{
+    ViewBag.Title = "StudentByID";
+}
+
+<h2>StudentByID</h2>
+<ul>
+    <li>Mã sinh viên:<b>@((TempData["student"] as Student).StudentID)</b> </li>
+    <li>Tên sinh viên: @((TempData["student"] as Student).StudentName)</li>
+    <li>Ngày sinh: @((TempData["student"] as Student).BirthDay.ToShortDateString())</li>
+    <li>Giới tính: @((TempData["student"] as Student).Sex?"Nam":"Nữ")</li>
+    <li>Địa chỉ: @((TempData["student"] as Student).Address)</li>
+</ul>
