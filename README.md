@@ -10,4 +10,15 @@ Lưu trữ bài tập môn lập trình web
   + Sử dụng _Layout trong MVC
   + Truyền data từ Controller sang View.
       * Sử dụng viewBag
+## Buổi 02: Tạo đối tượng Controller - View
+- Cách tạo Controller./ Action.
+- Cách Tạo View từ Action trong Controller.
+- Truyền Data Từ Controller --> View
+  + ViewBag
+  + ViewData
+  + TemData
+## Buổi 03: Tạo Model 
+- Xây dựng lớp Models
+- Tạo Database.
+- Kết nối Database SqlServer với ADO.Net.
 
