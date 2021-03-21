@@ -1,0 +1,19 @@
+﻿@using ProjectWebSite_20210320_Model.Models;
+@{
+    ViewBag.Title = "ProductByID";
+}
+@if (TempData["product"] is Product) { 
+<h2>Product: @((TempData["product"] as Product).ProductID)</h2>
+
+<ul>
+    <li>@((TempData["product"] as Product).ProductName)</li>
+    <li>@((TempData["product"] as Product).Quantity)</li>
+    <li>@(string.Format("{0:#,###0} đồng", (TempData["product"] as Product).Price))</li>
+</ul>
+}
+else
+{
+    <div class="alert alert-warning">
+        <strong>Product Empty!</strong> @TempData["product"].
+    </div>
+}

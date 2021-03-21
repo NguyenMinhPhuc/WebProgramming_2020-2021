@@ -1,0 +1,32 @@
+﻿@using ProjectWebSite_20210320_Model.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="form-horizontal">
+    <form action="/Product/ProductByID" method="get">
+        <div class="form-horizontal">
+            <input type="text" name="ProductID" placeholder="Nhập Product ID" class="form-horizontal"/>
+            <input type="submit" name="btnSearch" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<table class="table table-hover" >
+    <caption><h2>Product List</h2></caption>
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in TempData["products"] as List<Product>)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.Quantity</td>
+            <td>@(string.Format("{0:#,###0} đồng",item.Price))</td>
+        </tr>
+    }
+</table>
