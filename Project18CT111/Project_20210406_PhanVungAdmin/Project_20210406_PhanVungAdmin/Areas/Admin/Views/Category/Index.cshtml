@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Models.Category>
+
+@{
+    ViewBag.Title = "Loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+
+    <a href="/Admin/Category/Create" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-flag"></i>
+        </span>
+        <span class="text">Create</span>
+    </a>
+  @*  @Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Category", new { id = item.ID })" class="btn btn-primary btn-circle btn-sm">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a href="@Url.Action("Details", "Category", new { id = item.ID })" class="btn btn-info btn-circle btn-sm">
+                <i class="fas fa-th-list"></i>
+
+            </a>
+            <a href="@Url.Action("Delete", "Category", new { id = item.ID })" class="btn btn-danger btn-circle btn-sm">
+                <i class="fas fa-trash"></i>
+            </a>
+
+            @*@Html.ActionLink("Edit", "Edit",  new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { @class = "btn btn-danger btn-circle btn-lg" }, new { id = item.ID })*@
+        </td>
+    </tr>
+}
+
+</table>
