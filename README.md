@@ -21,4 +21,8 @@ Lưu trữ bài tập môn lập trình web
 - Xây dựng lớp Models
 - Tạo Database.
 - Kết nối Database SqlServer với ADO.Net.
+## Buổi 4: Kiểm tra
+## Buổi 5: Thực hành chia phân vùng và Tích hợp template  Sb Admin 2 cho Areas Admin
+- Chia phân vùng Admin trong Website
+- Tích hợp giao diện Sb Admin 2 cho phân vùng Admin.
 
