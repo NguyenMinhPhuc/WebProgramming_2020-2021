@@ -104,5 +104,37 @@ namespace Models
             return result;
 
         }
+
+        public object MyExecuteScalar(ref string err, string commandText, CommandType commandType, params SqlParameter[] param)
+        {
+            object result = null;
+            try
+            {
+                //Mo ket noi
+                if (connect.State == ConnectionState.Open)
+                    connect.Close();
+                connect.Open();
+                //khoi tao command
+                command = new SqlCommand()
+                {
+                    Connection = connect,
+                    CommandText = commandText,
+                    CommandType = commandType,
+                    CommandTimeout = 600
+                };
+                if (param != null)
+                {
+                    foreach (SqlParameter item in param)
+                    {
+                        command.Parameters.Add(item);
+                    }
+                }
+                result = command.ExecuteScalar();
+              
+            }
+            catch (Exception ex) { err = ex.Message; }
+            finally { connect.Close(); }// dung dong ket noi
+            return result;
+        }
     }
 }

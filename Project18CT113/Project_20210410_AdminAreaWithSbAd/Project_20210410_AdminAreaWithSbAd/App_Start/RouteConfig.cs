@@ -16,7 +16,8 @@ namespace Project_20210410_AdminAreaWithSbAd
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Project_20210410_AdminAreaWithSbAd.Controllers" }
             );
         }
     }

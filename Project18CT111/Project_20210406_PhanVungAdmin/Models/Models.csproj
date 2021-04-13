@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountDb.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="CategoryDb.cs" />
     <Compile Include="Database.cs" />
