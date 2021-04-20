@@ -42,7 +42,12 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="AccountDb.cs" />
+    <Compile Include="BasicDb.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="CategoryDb.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

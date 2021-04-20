@@ -145,7 +145,7 @@ namespace Project_20210419_Login.Areas.Admin.Commons
         {
             throw new NotImplementedException();
         }
-
+        
         public override bool ValidateUser(string username, string password)
         {
             string err=string.Empty;
