@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Action = "Index";
+    ViewBag.Controller = "Product";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    {
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                Alias: @Html.TextBox("searchString", null, new { @class = "form-control form-control-user" })
+            </div>
+            <div class="col-sm-2 mb-3 mb-sm-0 ">
+                CategoryID: @Html.DropDownList("categoryID", @ViewBag.categoryID as SelectList, "All", new { @class = "form-control form-control-user" })
+
+
+            </div>
+            <div class="col-sm-2 mb-3 mb-sm-0 ">
+
+                &nbsp;   <input type="submit" name="btnSearch" value="Tìm kiếm" class="btn btn-primary btn-user btn-block form-control form-control-user" />
+            </div>
+        </div>
+}
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Images)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Images)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
