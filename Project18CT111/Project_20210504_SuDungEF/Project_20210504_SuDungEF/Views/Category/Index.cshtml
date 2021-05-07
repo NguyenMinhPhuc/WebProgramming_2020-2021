@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Models.EntityFramework.Category>
-
+﻿@model PagedList.IPagedList<Models.EntityFramework.Category>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
 }
@@ -12,22 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Alias)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Alias)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ParentID)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ParentID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CreateDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Order)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Order)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
         </th>
         <th></th>
     </tr>
@@ -61,3 +61,11 @@
 }
 
 </table>
+<!-- Thêm mã phân trang -->
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+<!-- Kết thúc -->
+

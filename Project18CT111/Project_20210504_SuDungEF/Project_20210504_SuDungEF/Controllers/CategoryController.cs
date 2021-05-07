@@ -5,16 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Project_20210504_SuDungEF.Controllers
 {
     public class CategoryController : Controller
     {
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+
+            if (page == null) page = 1;
+
             var list = new CategoryDb().GetsCategories(0);
-            return View(list);
+
+            int pageSize = 3;
+
+            int pageNumber = (page ?? 1);
+            return View(list.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Category/Details/5
