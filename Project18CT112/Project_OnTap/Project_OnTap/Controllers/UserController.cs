@@ -1,5 +1,6 @@
 ﻿using Models;
 using Models.EF;
+using Project_OnTap.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,20 +32,20 @@ namespace Project_OnTap.Controllers
 
         // POST: User/Create
         [HttpPost]
-        public ActionResult Create(tblUser model)
+        public ActionResult Create(UserModel model)
         {
             try
             {
                 // TODO: Add insert logic here
-                var result = new UserDb().InsertUser(model);
+                var result = new UserDb().InsertUser(model.Username,model.Fullname,model.Address,model.Phone);
                 if (result > 0 && ModelState.IsValid)
                 {
-                    ModelState.AddModelError("", "Them  thanh cong");
-                    return RedirectToAction("Index");
+                    ViewBag.infor = "Thêm thành công";
+                    return RedirectToAction("Create");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Them khong thanh cong");
+                    ModelState.AddModelError("", "Thêm không thành công");
                 }   
             }
             catch
@@ -75,27 +76,32 @@ namespace Project_OnTap.Controllers
                 return View();
             }
         }
-
-        // GET: User/Delete/5
+        // Delete: User/Delete/5
+        [HttpDelete]
         public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: User/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var result = new UserDb().DeleteUser(id);
+                if (result > 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Khong xoa duoc");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            catch (Exception ex) { return View("Index"); } 
+            return View("Index");
+        }
+        [HttpPost]
+        public JsonResult ChangeStatus(int id)
+        {
+            var result = new UserDb().ChangeStatus(id);
+            return Json(new {
+                status=result
+            });
         }
     }
 }

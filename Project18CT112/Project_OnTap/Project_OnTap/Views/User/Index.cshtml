@@ -7,10 +7,10 @@
 
     <table class="table1">
         <tr class="table-title">
-            <td colspan="6" align="center">
-                Quan ly User
+            <td colspan="5" align="center" class="title-create">
+                Quản lý người dùng
             </td>
-            <td colspan="2">@Html.ActionLink("Them User moi", "Create")</td>
+            <td colspan="2">@Html.ActionLink("Thêm người dùng mới", "Create")</td>
 
         </tr>
         <tr class="table-title">
@@ -26,9 +26,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Systemright)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
@@ -40,7 +40,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="row_@item.UserID">
                 <td>
                     @Html.DisplayFor(modelItem => item.UserID)
                 </td>
@@ -48,25 +48,43 @@
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Fullname)
+                    @Html.DisplayFor(modelItem => item.Fullname))
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
+                <td class="img-Status">
+                    <img src="@(item.Status == 1 ? @"/assests/Images/on.gif" : @"/assests/Images/off.gif")" alt="Status" />
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Systemright)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
+
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                    @Html.CheckBoxFor(modelItem => item.Delete)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Xóa", "Delete", new { id = item.UserID }, new AjaxOptions
+               { 
+                    Confirm="Ban co muon xoa dong nay khong?",
+                    OnComplete=string.Format("$('#row_{0}').remove()",@item.UserID),
+                    HttpMethod="Delete"
+               })
+                </td>
+                <td> <a href="" class="btn-active" data-id="@item.UserID">
+                    @Html.Raw(item.Status==1?"<strong>Kích hoạt</strong>":"Khóa")
+                    </a>
                 </td>
             </tr>
         }
 
     </table>
 </div>
+@*@section jsFooter{
+
+    <script src="~/Scripts/UserController.js">
+    </script>
+}*@ 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - BÀI THI LẬP TRÌNH WEB</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
@@ -11,20 +11,24 @@
 </head>
 <body>
     <div id="container">
-        <div id="title1"> De thi ASP.NET Khoa CNTT</div>
+        <div id="title1">ĐỀ THI LẬP TRÌNH WEB - KHOA CÔNG NGHỆ THÔNG TIN</div>
         <div id="title2">
-            <div class="title2-body">Ho va ten</div>
-            <div class="title2-body">Ma so</div>
-            <div class="title2-body">lop</div>
-            <div class="title2-body">So nmy</div>
+            <div class="title2-body">Họ và tên: Nguyễn Văn A</div>
+            <div class="title2-body">Mã số: 118000234</div>
+            <div class="title2-body">Lớp: 18CT111</div>
+            <div class="title2-body">Số máy: 02</div>
         </div>
         <div id="Content">
            @RenderBody()
         </div>
 
     </div>
-
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/UserController.js"></script>
+    @*@RenderSection("jsFooter", required: false);*@
+
 </body>
 </html>

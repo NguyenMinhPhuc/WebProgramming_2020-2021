@@ -1,22 +1,26 @@
-﻿@model Models.EF.tblUser
+﻿@model Project_OnTap.Models.UserModel
 
 @{
     ViewBag.Title = "Create";
 }
+
 <div class="content-Create">
     <h4 class="title-Create">Tạo người dùng mới</h4>
 
-    <div class="danhsachnguoidung">
+    <div class="LinkPreview">
         @Html.ActionLink("Danh sách ngưới dùng", "Index")
     </div>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "User", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-          
+            <h4>UserModel</h4>
+            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -33,21 +37,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Systemright, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Systemright, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Systemright, "", new { @class = "text-danger" })
-                </div>
-            </div>
+           
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -74,9 +64,9 @@
             </div>
         </div>
     }
-
 </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

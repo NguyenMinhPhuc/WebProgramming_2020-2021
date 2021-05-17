@@ -63,6 +63,9 @@ body{
 .table1,tr,td{
     
 }
+.table1 th{
+    text-align:center;
+}
 .table1 td{
     line-height:2;
     text-align:center;
@@ -70,11 +73,19 @@ body{
 .table-title{
     background-color:#009999;
     color:white;
+
 }
 a{
     color:black;
 }
-.danhsachnguoidung{
+a:hover{
+    color:green;
+}
+.LinkPreview{
     text-align:right;
     line-height:2;
+    font-size:1.3em;
+}
+.img-Status{
+    text-align:center;
 }

@@ -32,5 +32,9 @@ namespace Models.EF
         [Required]
         [StringLength(20)]
         public string Phone { get; set; }
+
+        bool delete = false;
+        public bool Delete { get { return delete; } set { delete = value; } }
+
     }
 }

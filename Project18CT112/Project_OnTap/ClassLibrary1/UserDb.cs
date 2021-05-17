@@ -31,29 +31,33 @@ namespace Models
             return user;
         }
 
-        public int InsertUser(tblUser user)
+        public int InsertUser(string userName,string fullName,string address,string phone)
         {
             SqlParameter[] param = new SqlParameter[]{
-                new SqlParameter("@ID",user.UserID),
-                 new SqlParameter("@Username",user.Username),
-                  new SqlParameter("@Fullname",user.Fullname),
-                   new SqlParameter("@Status",user.Status),
-                    new SqlParameter("@Address",user.Address),
-                     new SqlParameter("@Phone",user.Phone),
-                      new SqlParameter("@Userpass",user.Userpass), 
-                      new SqlParameter("@Systemright",user.Systemright)
+                 new SqlParameter("@Username",userName),
+                  new SqlParameter("@Fullname",fullName),
+                    new SqlParameter("@Address",address),
+                     new SqlParameter("@Phone",phone)
             };
-            var result = context.Database.ExecuteSqlCommand("", param);
+            var result = context.Database.ExecuteSqlCommand("PSP_tblUser_Insert", param);
             return result;
         }
 
-        public int DeleteUser(tblUser user)
+        public int DeleteUser(int id)
         {
             SqlParameter[] param = new SqlParameter[]{
-                new SqlParameter("@ID",user.UserID)
+                new SqlParameter("@UserId",id)
                  
             };
-            var result = context.Database.ExecuteSqlCommand("", param);
+            var result = context.Database.ExecuteSqlCommand("PSP_User_Delete @UserId", param);
+            return result;
+        }
+        public int? ChangeStatus(int id)
+        {
+            SqlParameter[] param = new SqlParameter[]{
+                new SqlParameter("@UserId",id)
+            };
+            var result = context.Database.SqlQuery<int>("PSP_User_ChangeStatus @UserId", param).SingleOrDefault();
             return result;
         }
     }
