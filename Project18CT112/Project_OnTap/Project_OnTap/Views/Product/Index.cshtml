@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Models.EF.tblPro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ProDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProStatus)
+        </th>
+        <th></th>
+        <th>ChangeStatus</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="row_@item.ProID">
+        <td>
+            @Html.DisplayFor(modelItem => item.ProName)
+        </td>
+ 
+        <td>
+            @Html.DisplayFor(modelItem => item.ProDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatID)
+        </td>
+        <td>
+            <img src="@(item.ProStatus == 1 ? "/Assests/images/on.gif" : "/Assests/images/off.gif")" alt="product Status" />
+           @* @Html.DisplayFor(modelItem => item.ProStatus)*@
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProID }) |
+            @Ajax.ActionLink("Xóa", "Delete", new { id=item.ProID }, new AjaxOptions{ Confirm=string.Format("Bạn có muốn xóa product có id là {0}",@item.ProID),OnComplete=string.Format("$('#row_{0}').remove()",@item.ProID),HttpMethod="Delete"})
+        </td>
+
+        <td>
+            <a href="" class="btn-active" data-id="@item.ProID">
+                @Html.Raw(item.ProStatus==1?"<strong>Kích hoạt</strong>":"Khóa")
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+@section jsFooter{<script src="~/Scripts/ProController.js"></script>}

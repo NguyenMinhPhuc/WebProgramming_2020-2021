@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Models.EF.tblCat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CatName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CatDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.CatID">
+            <td>
+                @Html.DisplayFor(modelItem => item.CatName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CatDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CatID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CatID }) |
+                @* Thực hiện việc xóa record trực tiếp trên list. *@
+                @Ajax.ActionLink("Xóa", "Delete", new { id = item.CatID },new AjaxOptions{
+                    Confirm="Bạn có muốn xóa record này không?",
+                    OnComplete=string.Format("$('#row_{0}').remove()",@item.CatID),
+                    HttpMethod="Delete"
+                  })
+            </td>
+        </tr>
+    }
+
+</table>
