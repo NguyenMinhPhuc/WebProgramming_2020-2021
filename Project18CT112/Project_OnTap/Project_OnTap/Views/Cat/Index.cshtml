@@ -22,6 +22,7 @@
             @Html.DisplayNameFor(model => model.CatStatus)
         </th>
         <th></th>
+        <th>Change status</th>
     </tr>
 
     @foreach (var item in Model)
@@ -35,7 +36,9 @@
                 @Html.DisplayFor(modelItem => item.CatDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CatStatus)
+                <img src="@(item.CatStatus == 1 ? "/Assests/images/on.gif" : "/Assests/images/off.gif")" alt="Alternate Text" />
+              
+             
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CatID }) |
@@ -47,7 +50,17 @@
                     HttpMethod="Delete"
                   })
             </td>
+
+            <td>
+                <a href="" class="btn-Change" data-id="@item.CatID" >
+                    @Html.Raw(item.CatStatus==1?"<strong>Kích hoạt</strong>":"khóa")
+                </a>
+            </td>
         </tr>
     }
-
 </table>
+
+@section jsFooter{
+    <script src="~/Scripts/CatController.js"> </script>
+}
+

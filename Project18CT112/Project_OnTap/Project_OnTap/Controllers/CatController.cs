@@ -87,5 +87,14 @@ namespace Project_OnTap.Controllers
             }
             return View("Index");
         }
+        [HttpPost]
+        public JsonResult ChangeStatus(int id)
+        {
+            var result = new CatDb().UpdateCat(id);
+            return Json(new 
+            {
+                status=result
+            });
+        }
     }
 }
