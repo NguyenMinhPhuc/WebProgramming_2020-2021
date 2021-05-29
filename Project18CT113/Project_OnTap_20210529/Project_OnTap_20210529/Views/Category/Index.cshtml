@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Models.EF.tblCat>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="content-center">
+    <table class="table1">
+        <tr class="table-title">
+            <td colspan="3" id="title1">Danh sách danh mục</td>
+            <td>@Html.ActionLink("Thêm danh mục mới", "Create")</td>
+        </tr>
+        <tr class="table-title">
+            <th>
+                Tên danh mục
+            </th>
+
+            <th>
+                mô tả danh mục
+            </th>
+            <th>
+                Trạng thái danh mục
+            </th>
+            <th>Xóa</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.CatID">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CatName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CatDescription)
+                </td>
+                <td>
+                    <img src="@(item.CatStatus == 1 ? "/Assests/images/on.gif" : "/Assests/images/off.gif")" alt="Alternate Text" />
+                    @Html.DisplayFor(modelItem => item.CatStatus)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Xóa", "Delete", new { id = item.CatID }, new AjaxOptions
+           {
+               Confirm = "Ban co muon xoa ",
+               OnComplete = string.Format("$('#row_{0}').remove()", item.CatID),
+               HttpMethod = "DELETE"
+           })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

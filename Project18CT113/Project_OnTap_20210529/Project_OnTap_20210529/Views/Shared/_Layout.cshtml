@@ -23,16 +23,29 @@
             <div class="title2-body">Số máy: 02</div>
         </div>
         <div id="Content">
-           @RenderBody()
+            <div class="row">
+                <div class="col-md-3">
+                    @{Html.RenderAction("MenuCategory", "Product");}
+                </div>
+                <div class="col-md-9">@RenderBody()</div>
+            </div>
         </div>
-
+        @if (@TempData["AlertType"] != null)
+        {
+            if (!string.IsNullOrEmpty(TempData["AlertMessage"].ToString()))
+            {
+                <div class="alert @TempData["AlertType"].ToString() hide" id="AlertBox">
+                    <strong>Success!</strong> @TempData["AlertMessage"].ToString()
+                </div>
+            }
+        }
     </div>
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-   
-    
+    <script src="/Scripts/MyScript.js"></script>
+
     @RenderSection("jsFooter", required: false);
 
 </body>

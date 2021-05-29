@@ -38,7 +38,10 @@
             <td>
                 <img src="@(item.CatStatus == 1 ? "/Assests/images/on.gif" : "/Assests/images/off.gif")" alt="Alternate Text" />
               
-             
+                @*<div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="switch1" value="@(item.CatStatus==1?true:false)">
+                    <label class="custom-control-label" for="switch1"></label>
+                </div>*@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CatID }) |
@@ -49,7 +52,7 @@
                     OnComplete=string.Format("$('#row_{0}').remove()",@item.CatID),
                     HttpMethod="Delete"
                   })
-            </td>
+            ></td>
 
             <td>
                 <a href="" class="btn-Change" data-id="@item.CatID" >

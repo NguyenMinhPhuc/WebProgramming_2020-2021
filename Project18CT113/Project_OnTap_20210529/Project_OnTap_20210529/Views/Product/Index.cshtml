@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Models.EF.tblPro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-center">
+    <table class="table">
+        <tr>
+            <td colspan="3">
+                Danh sach product
+            </td>
+            <td>
+                @Html.ActionLink("Create New", "Create")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @using(Html.BeginForm("Index","Product",FormMethod.Get))
+                {
+                  @Html.DropDownList("CategoryID", new SelectList(@ViewBag.CategoryID, "CatID", "CatName"), "All", new { onchange = "this.form.submit();" })
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProDescription)
+            </th>
+
+            <th>Delete</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProDescription)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
