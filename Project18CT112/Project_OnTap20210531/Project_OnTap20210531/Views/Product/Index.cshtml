@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Models.EF.tblPro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-center">
+    <table class="table1">
+        <tr class="table-title">
+            <td colspan="3"><h3>Quan ly danh sach san pham</h3></td>
+            <td>@Html.ActionLink("Them san pham", "Create")</td>
+        </tr>
+        <tr>
+           <td colspan="4">
+                @using(Html.BeginForm("Index","Product",FormMethod.Get))
+                {
+                    @Html.DropDownList("catId", new SelectList(@ViewBag.ListCategory, "CatID", "CatName"), "All", new { onchange = "this.form.submit();" })
+                }
+               </td>
+        </tr>
+        <tr class="table-title">
+            <th>
+                Tên sản phẩm
+            </th>
+
+            <th>
+                Mô tả sản phẩm
+            </th>
+            <th>
+                trạng thái
+            </th>
+            <th>Xóa</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.ProID">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProStatus)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Xóa", "Delete", new { id = item.ProID }, new AjaxOptions
+       {
+           Confirm = "ban co muon xoa",
+           OnComplete = string.Format("$('#row_{0}').remove()", item.ProID),
+           HttpMethod = "DELETE"
+       })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -8,9 +8,17 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class UserDb
+    public class UserDb : IDisposable
     {
         ThiASPDbContext context;
+        public void Dispose()
+        {
+            if (context != null)
+            {
+                context.Dispose();
+                context = null;
+            }
+        }
         public UserDb()
         {
             context = new ThiASPDbContext();
