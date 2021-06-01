@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Models.EF.tblPro>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="content-center">
+    <table class="table1">
+        <tr class="table-title">
+            <td colspan="2"><h2>Quản lý danh sách sản phẩm: </h2> </td>
+            <td>@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+            {
+                @Html.DropDownList("catID", new SelectList(ViewBag.Categories, "CatID", "CatName"), "All", new { onChange = "this.form.submit();" })
+                @*<input type="submit" name="btnchon" value="Chon" />*@
+            }</td>
+           
+           
+            <td>@Html.ActionLink("Thêm sản phẩm", "Create")</td>
+        </tr>
+        <tr class="table-title">
+            <th>
+                Tên sản phẩm
+            </th>
+
+            <th>
+                Mô tả sản phẩm
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>Xóa</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="#row_@item.ProID">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProDescription)
+                </td>
+                <td>
+                    <img src="@(item.ProStatus == 1 ? "/Assests/Images/on.gif" : "/Assests/Images/off.gif")" alt="Alternate Text" />
+                </td>
+                <td>
+                    @Ajax.ActionLink("Xóa Product", "Delete", new { id = item.ProID }, new AjaxOptions
+               {
+                   Confirm = "Ban co muon xoa product",
+                   OnComplete = string.Format("$('#row_{0}').remove()", item.ProID),
+                   HttpMethod = "DELETE"
+               })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

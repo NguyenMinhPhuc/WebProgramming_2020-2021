@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BÀI THI LẬP TRÌNH WEB</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="title1">ĐỀ THI LẬP TRÌNH WEB - KHOA CÔNG NGHỆ THÔNG TIN</div>
+        <div id="title2">
+            <div class="title2-body">Họ và tên: Nguyễn Văn A</div>
+            <div class="title2-body">Mã số: 118000234</div>
+            <div class="title2-body">Lớp: 18CT111</div>
+            <div class="title2-body">Số máy: 02</div>
+        </div>
+        <div id="Content">
+            <div class="row">
+                <div class="col-md-3">@{Html.RenderAction("_MenuCategory", "Product");}</div>
+                <div class="col-md-9">@RenderBody()</div>
+            </div>
+          
+        </div>
+        @if (@TempData["AlertType"] != null)
+        {
+            if (!string.IsNullOrEmpty(TempData["AlertMessage"].ToString()))
+            {
+                <div class="alert @TempData["AlertType"].ToString() hide" id="AlertBox">
+                    <strong>Success!</strong> @TempData["AlertMessage"].ToString()
+                </div>
+            }
+        }
+    </div>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/Scripts/MyScript.js"></script>
+
+    @RenderSection("jsFooter", required: false);
+
+</body>
+</html>

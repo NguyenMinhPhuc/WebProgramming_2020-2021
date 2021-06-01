@@ -1,16 +1,20 @@
 ﻿@model IEnumerable<Models.EF.tblCat>
 <table class="table table-bordered table-striped table-hover">
     <thead>
-        <tr><th>Danh muc san pham</th></tr>
+        <tr>
+            <th>Danh mục sản phẩm</th>
+        </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td><a href="@Url.Action("Index", "Product", new { catId=item.CatID})"></a></td>
+                <td>
+                <a href="@Url.Action("Index", "Product", new { catID = item.CatID })">@item.CatName</a>
+                </td>
             </tr>
         }
         
     </tbody>
+
 </table>
-@*<a href=@string.Format("/Product/Index/?catId={0}",@item.CatID)>@item.CatName</a>*@
